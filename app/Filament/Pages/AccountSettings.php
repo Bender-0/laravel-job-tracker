@@ -1,13 +1,16 @@
 <?php
 
-namespace App\Livewire\Pages\Auth;
+namespace App\Filament\Pages;
 
-use Illuminate\Support\Facades\Auth;
-use App\Filament\Pages\Auth\EditProfile as FilamentEditProfile;
+use Filament\Pages\Page;
 
-class EditProfile extends FilamentEditProfile
+class AccountSettings extends Page
 {
-    protected static string $view = 'livewire.pages.auth.edit-profile';
+    protected static bool $shouldRegisterNavigation = false;  
+
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+
+    protected static string $view = 'filament.pages.account-settings';
 
     protected function getForms(): array
     {
@@ -17,7 +20,6 @@ class EditProfile extends FilamentEditProfile
             'pages.auth.browser-sessions-form-component',
             'pages.auth.delete-account-form-component',
         ];
-
 
         return $forms;
     }

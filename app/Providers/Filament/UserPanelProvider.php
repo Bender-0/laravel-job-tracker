@@ -6,7 +6,10 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
 use Filament\PanelProvider;
+use Filament\Navigation\MenuItem;
 use Filament\Support\Colors\Color;
+use App\Filament\Pages\AccountSettings;
+use App\Filament\Pages\ProfileSettings;
 use App\Filament\Pages\Auth\EditProfile;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
@@ -33,7 +36,11 @@ class UserPanelProvider extends PanelProvider
             ->registration()
             ->passwordReset()
             ->emailVerification()
-            ->profile(EditProfile::class)
+            ->userMenuItems([
+                MenuItem::make()
+                    ->label('Account Settings')
+                    ->url(fn (): string => AccountSettings::getUrl())
+            ])
             ->colors([
                 'primary' => Color::Amber,
             ])
