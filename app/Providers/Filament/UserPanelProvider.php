@@ -39,7 +39,10 @@ class UserPanelProvider extends PanelProvider
             ->userMenuItems([
                 MenuItem::make()
                     ->label('Account Settings')
-                    ->url(fn (): string => AccountSettings::getUrl())
+                    ->url(fn (): string => AccountSettings::getUrl()),
+                MenuItem::make()
+                    ->label('Profile Settings')
+                    ->url(fn (): string => ProfileSettings::getUrl()),
             ])
             ->colors([
                 'primary' => Color::Amber,

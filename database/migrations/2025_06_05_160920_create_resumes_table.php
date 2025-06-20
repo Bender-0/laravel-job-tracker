@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('resumes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('application_id')->references('id')->on('applications')->cascadeOnDelete();
+            $table->foreignId('application_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
             $table->string('resume')->nullable();
             $table->timestamps();
         });
